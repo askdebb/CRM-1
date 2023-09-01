@@ -1,0 +1,71 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body style="background-color: #E7E9EB;">
+    <div class="container pt-2">
+        <section class="mt-5 w-50 mx-auto card p-4">
+
+            <div class="fs-4 text-center mb-5">
+                <img src="{% static '/img/gbc.png' %}" class="img-fluid rounded-start" alt="gbc-logo.png" style="width: 10rem;"><br>
+                <small><b>Register Here</b></small>
+            </div>    
+
+                <form class="row g-3" method="POST" action=" ">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                      <label for="first_name" class="form-label">First Name</label>
+                      {{ form.first_name | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="last_name" class="form-label">Last Name</label>
+                      {{ form.last_name | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email_address" class="form-label">Email Address</label>
+                      {{ form.email_address | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="contact_number" class="form-label">Contact No.</label>
+                      {{ form.contact_no | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="password_1" class="form-label">Password</label>
+                      {{ form.password_1 | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="password_2" class="form-label">Confirm Password</label>
+                      {{ form.password_2 | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="date_of_birth" class="form-label">Date of Birth</label>
+                      {{form.date_of_birth | as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="date_employed" class="form-label">Date Employed</label>
+                      {{form.date_employed| as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="department" class="form-label">Department</label>
+                      {{form.department| as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                      <label for="supervisor" class="form-label">Supervisor</label>
+                      {{form.supervisor| as_crispy_field }}
+                    </div>
+                      <button type="submit" class="btn btn-primary">Create an account</button>
+                    </div>
+                  </form>
+                
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

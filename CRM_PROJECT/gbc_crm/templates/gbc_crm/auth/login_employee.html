@@ -1,0 +1,41 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body style="background-color: #E7E9EB;">
+    <div class="container mt-5 pt-2 w-50">
+        <section class="mt-5 w-50 mx-auto card p-4 w-50">
+
+            <div class="fs-4 text-center mb-5">
+                <img src="{% static '/img/gbc.png' %}" class="img-fluid rounded-start" alt="gbc-logo.png" style="width: 10rem;"><br>
+                <small class="fs-6 fw-normal">Welcome back, Sign in</small>
+            </div>    
+
+                <form class="row g-3" method="POST" action=" ">
+                    {% csrf_token %}
+                    <div class="col-12">
+                      <label for="enail_address" class="form-label">Email Address</label>
+                      <input type="email" class="form-control" name="email_address" required>
+
+                    </div>
+                    <div class="col-12">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" name="password_1" required>
+                    </div>
+                    <div class="d-block w-50 mx-auto  text-center">
+                      <button type="submit" class="btn btn-primary mt-3">Log in</button>
+                    </div>
+                  </form>
+                
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
