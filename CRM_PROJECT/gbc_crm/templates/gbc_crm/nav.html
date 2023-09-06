@@ -1,0 +1,65 @@
+{% load static %}
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static '/img/gbc.png' %}" alt="Logo" width="90%" height="24" class="d-inline-block align-text-top">
+
+        </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          {% if user.is_authenticated %}
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=" {% url 'all_workers'%}">All workers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'form_employee' %}">Add Employee Data</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="navbar-nav naV-side">
+            <span style="color:#fff;" class="text-muted mt-2">Welcome {{ user.username }}!</span>
+            {% comment %} <a class="nav-link active" href="{% url 'login_e' %}">Sign In</a> {% endcomment %}
+          <a class="nav-link" href="{% url 'logout_e' %}">Sign Out</a> 
+        </div>
+
+        {% else %}
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=" {% url 'all_workers'%}">All workers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'form_employee' %}">Add Employee Data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="navbar-nav naV-side">
+   
+          <a class="nav-link active" href="{% url 'login_e' %}">Sign In</a>
+        <a class="nav-link" href="{% url 'reg_e' %}">Sign Up</a> 
+        </div>
+
+        {% endif %}
+        </div>
+      </nav>
+    

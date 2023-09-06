@@ -4,7 +4,14 @@ from . import views
 urlpatterns = [
    
     path('', views.home, name='home'),
-    path('reg-employee/', views.employee_form, name='reg_employee'),
-    path('login-employee/', views.employee_form_login, name='login_employee'),
+    path('form-employee/', views.employee_form, name='form_employee'),
+    path('supervisor/', views.getSupervisorApi, name='supervisor'),
+    path('all-workers/', views.allworkers, name='all_workers'),
+    
+    
+    
+    path('login-e/', views.employee_login, name='login_e'),
+    path('logout-e/', views.log_out, name='logout_e'),
+    path('reg-e/', views.reg_employee, name='reg_e'),
     
 ]

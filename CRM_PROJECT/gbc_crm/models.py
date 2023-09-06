@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -49,13 +50,11 @@ class Employee(models.Model):
     last_name = models.CharField("Last Name", max_length=60, blank=True, null=True)
     email_address = models.EmailField("Email Address", max_length=60, blank=True, null=True)
     contact_no = models.CharField("Contact Number", max_length=20, blank=True, null=True)
-    password_1 = models.CharField("Password", max_length=50, default='')
-    password_2 = models.CharField("Confirm Password", max_length=50, default='')
     date_of_birth = models.DateField(null=False, blank=False, default='')
     date_employed = models.DateField("Date Employed", default='', null=False, blank=False)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='')
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, related_name="employee_department")
-    supervisor = models.OneToOneField(Supervisor, on_delete=models.SET_NULL, null=True,  related_name="employee_supervisor")
-        
+    supervisor = models.ForeignKey(Supervisor, on_delete=models.SET_NULL, null=True,  related_name="employee_supervisor")
     
     
     def __str__(self):

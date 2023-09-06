@@ -1,0 +1,100 @@
+
+{% extends 'gbc_crm/mother.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+
+Employee Form
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+    <div class="container pt-2">
+        <section class="my-5 w-50 mx-auto card p-4">
+
+            <div class="fs-4 text-center mb-5">
+                <img src="{% static '/img/gbc.png' %}" class="img-fluid rounded-start" alt="gbc-logo.png" style="width: 10rem;"><br>
+                <small class="text-muted"><b>Employee Form</b></small>
+            </div>    
+
+
+
+                <form class="row g-3" method="POST" action=" ">
+                  
+                    {% csrf_token %}
+                    {% comment %} {% for field in form %}
+                  
+                    <div class="col-md-6">
+                      
+                    
+                      {{ field | as_crispy_field }}
+                    </div>
+                    {% endfor %}
+                    {{ field.errors }} {% endcomment %}
+
+                    {{ form.errors }}
+                    <div class="col-md-4 fieldWrapper">
+                      {% comment %} <label for="user" class="form-label">Username </label> {% endcomment %}
+                      {% comment %} <input type="text" name="user" value="{{ request.user }}" class="form-control"> {% endcomment %}
+
+                      {{ form.user | as_crispy_field }} 
+                      {% comment %}  {% endcomment %}
+                  </div>
+                  <div class="col-md-4 fieldWrapper">
+                      <label for="surname" class="form-label">Last name</label>
+                      <input type="text" name="last_name" value="{{user.last_name}}" class="form-control">
+                      {% comment %} {{ form.last_name }}  {% endcomment %}
+                  </div>
+                  <div class="col-md-4 fieldWrapper">
+                      <label for="othernames" class="form-label">first name</label>
+                      <input type="text" name="first_name" value="{{user.first_name}}" class="form-control">
+
+                      {% comment %} {{ form.first_name | as_crispy_field }}  {% endcomment %}
+                  </div>
+
+                  <div class="col-md-6 fieldWrapper">
+                    <label for="inputEmail4" class="form-label">Email address</label>
+                    <input type="text" name="email_address" value="{{user.email}}" class="form-control">
+ 
+                    {% comment %} {{ form.email_address | as_crispy_field }} {% endcomment %}
+                  </div>
+
+                  <div class="col-md-6 fieldWrapper">
+                    {% comment %} <label for="staff-id" class="form-label">Contact no</label> {% endcomment %}
+                    {{ form.contact_no | as_crispy_field }}
+                  </div>
+  
+                  <div class="col-md-6 fieldWrapper">
+                      {% comment %} <label for="dateOfbirth" class="form-label">Date of birth:</label> {% endcomment %}
+                      {{ form.date_of_birth | as_crispy_field }}
+                  </div>
+                 
+                  
+                  <div class="col-md-6 fieldWrapper">
+                    {% comment %} <label for="ntc" class="form-label">Date Employed</label> {% endcomment %}
+                    {{ form.date_employed | as_crispy_field }}
+                  </div>
+                 
+                  <div class="col-md-6 fieldWrapper">
+                    {% comment %} <label for="residence" class="form-label">Department</label> {% endcomment %}
+                    {{form.department | as_crispy_field }}
+                  </div>
+                  <div class="col-md-6 fieldWrapper">
+                    {% comment %} <label for="salary" class="form-label">Supervisor</label> {% endcomment %}
+                    {{ form.supervisor | as_crispy_field }}
+                  </div>
+                 
+                    
+                   <div>
+                      <button type="submit" class="btn btn-primary d-block mx-auto w-50">Save data</button>
+                    </div>
+            </form>
+        </section>
+    </div>
+                
+    {% endblock content %}
