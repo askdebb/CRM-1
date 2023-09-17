@@ -48,24 +48,13 @@ def log_out(request):
     logout(request)
     return redirect ('login_e') 
 
-    """
-        initial=[
-...         {
-...             "title": "Django is now open source",
-...             "pub_date": datetime.date.today(),
-...         }
-...     ]
-    """ 
-
 
 def employee_form(request):
     if request.user.is_authenticated:
         form = EmployeeSelectForm
-        if request.method == 'POST':
+        if request.method == 'POST':  
             form = EmployeeSelectForm(request.POST)
-            print(form)
             if form.is_valid():
-                form.instance.user = request.user
                 form.save()
                 messages.success(request, ' {} form added successfully'.format(request.user.username)) 
                 return redirect('home')

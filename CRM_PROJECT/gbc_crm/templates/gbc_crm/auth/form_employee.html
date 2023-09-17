@@ -37,7 +37,7 @@ Employee Form
                     {% endfor %}
                     {{ field.errors }} {% endcomment %}
 
-                    {{ form.errors }}
+                    {% comment %} {{ form.errors }} {% endcomment %}
                     <div class="col-md-4 fieldWrapper">
                       {% comment %} <label for="user" class="form-label">Username </label> {% endcomment %}
                       {% comment %} <input type="text" name="user" value="{{ request.user }}" class="form-control"> {% endcomment %}

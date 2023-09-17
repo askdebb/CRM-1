@@ -62,19 +62,8 @@ class EmployeeSelectForm(forms.ModelForm):
         super(EmployeeSelectForm, self).__init__(*args, **kwargs)
         
         self.fields['supervisor'].queryset = Supervisor.objects.none()
-        # if 'user' is not None:
-        #     self.fields['user'].queryset = User.objects.filter(
-        #         is_active=True, user__userform='user'
-        #     )
-        
-        if 'user' in self.data:
-            try:
-                user_id = int(self.data.get('user'))
-                self.fields['user'].queryset = User.objects.filter(user_id=user_id).order_by('username')
-            except (ValueError, TypeError):
-                pass
-        elif self.instance.pk:
-            self.fields['user'].queryset = self.instance.employee.user.order_by('username')
+        # self.fields['user'].queryset = User.objects.get([0])
+      
   
         if 'department' in self.data:
             try:
@@ -90,6 +79,6 @@ class EmployeeSelectForm(forms.ModelForm):
         self.fields['department'].label = 'Department'
         self.fields['supervisor'].label = 'Supervisor'
         
-        # self.fields['user'].widget.attrs['class'] = 'form-control'
-        # self.fields['user'].label = 'User'
+        self.fields['user'].widget.attrs['class'] = 'form-control'
+        self.fields['user'].label = 'User'
         
